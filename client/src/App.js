@@ -1,25 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import { Card, Tab, Tabs } from "@blueprintjs/core"
+import { useState } from "react"
+import Login from "./components/Login"
+import Register from "./components/Register"
 
 function App() {
+  const [currentTab, setCurrentTab] = useState("login")
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Card elevation="1">
+      <Tabs id="Tabs" onChange={setCurrentTab} selectedTabId={currentTab}>
+        <Tab id="login" title="Login" panel={<Login />} />
+        <Tab id="register" title="Register" panel={<Register />} />
+        <Tabs.Expander />
+      </Tabs>
+    </Card>
+  )
 }
 
-export default App;
+export default App
